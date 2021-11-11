@@ -161,9 +161,37 @@ console.log('Task 3:', eli.speak());
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor(arg)
-
+  constructor(arg){
+    super(arg);
+    this.specialty = arg.specialty;
+    this.favLanguage = arg.favLanguage;
+    this.catchPhrase = arg.catchPhrase;
+  }
+  demo(subject){
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject){
+    return `${student} receives a perfect score on ${subject}`;
+  }
 }
+
+const britt = new Instructor ({
+  name: 'Britt',
+  age: 33,
+  location: 'North Pole',
+  specialty: 'humming',
+  favLanguage: 'CSS',
+  catchPhrase: 'You can do it!',
+});
+
+console.log('Task 4:', britt);
+console.log(britt.demo('Math'));
+console.log(britt.grade('Zeke', 'English'));
+
+
+
+
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
