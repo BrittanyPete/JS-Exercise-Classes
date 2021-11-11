@@ -64,11 +64,11 @@ class Person {
 
 const hilda = new Person('Hilda', 73)
 
-hilda.eat('pizza');
-hilda.eat('pasta');
-console.log('Task 1:', hilda);
-console.log('pooped', hilda.poop());
-console.log('string', hilda.toString());
+// hilda.eat('pizza');
+// hilda.eat('pasta');
+// console.log('Task 1:', hilda);
+// console.log('pooped', hilda.poop());
+// console.log('string', hilda.toString());
 
 
 /*
@@ -86,7 +86,27 @@ console.log('string', hilda.toString());
 */
 
 class Car {
-  
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    return this.tank = this.tank + gallons;
+  }
+  drive(distance) {
+    const milesDriven = this.tank * this.milesPerGallon;
+    if(distance <= milesDriven){
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - (distance / this.milesPerGallon);
+      return `We've driven ${this.odometer} many miles, and the tank has ${this.tank} many gallons left`;
+    } else {
+      this.odometer = this.odometer + milesDriven;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
 
 /*
