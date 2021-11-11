@@ -64,11 +64,11 @@ class Person {
 
 const hilda = new Person('Hilda', 73)
 
-// hilda.eat('pizza');
-// hilda.eat('pasta');
-// console.log('Task 1:', hilda);
-// console.log('pooped', hilda.poop());
-// console.log('string', hilda.toString());
+hilda.eat('pizza');
+hilda.eat('pasta');
+console.log('Task 1:', hilda);
+console.log('pooped', hilda.poop());
+console.log('string', hilda.toString());
 
 
 /*
@@ -109,6 +109,12 @@ class Car {
   }
 }
 
+const ford = new Car('Ford', 35);
+
+console.log('Task 2:', ford);
+console.log(ford.fill(15));
+console.log(ford.drive(431));
+
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -122,8 +128,23 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  
+  constructor(arg){
+    this.name = arg.name;
+    this.age = arg.age;
+    this.location = arg.location;
+  }
+  speak() {
+    return `Hello may name is ${this.name}, I am from ${this.location}`;
+  }
 }
+
+const eli = new Lambdasian({
+  name: 'Eli',
+  age: 28,
+  location: 'Antarctica',
+});
+
+console.log('Task 3:', eli.speak());
 
 /*
   TASK 4
@@ -139,7 +160,8 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor(arg)
 
 }
 /*
