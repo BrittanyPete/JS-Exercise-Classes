@@ -190,8 +190,6 @@ console.log(britt.grade('Zeke', 'English'));
 
 
 
-
-
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -207,9 +205,39 @@ console.log(britt.grade('Zeke', 'English'));
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-   
+class Student extends Lambdasian {
+  constructor(arg) {
+  super(arg);
+  this.previousBackground = arg.previousBackground;
+  this.className = arg.className;
+  this.favSubjects = arg.favSubjects;
+  }
+  listSubjects() {
+    return `Loving ${this.favSubjects}!`;
+  }
+  PRAssignment(subject) {
+    return `${this.name} has submitted PR for ${subject}`;
+  }
+  sprintChallenge(subject) {
+    return `${this.name} has begun spring challenge on ${subject}`;
+  }
 }
+
+const ace = new Student({
+  name: 'Ace',
+  age: 22,
+  location: 'Costa Rica',
+  previousBackground: 'student',
+  className: 'Class123',
+  favSubjects: 'HTML, CSS, JS',
+});
+
+console.log('Task 5:', ace);
+console.log(ace.listSubjects());
+console.log(ace.PRAssignment('CSS'));
+console.log(ace.sprintChallenge('JS'));
+
+
 
 /*
   TASK 6
@@ -224,8 +252,12 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
+class ProjectManager extends Instructor {
+   constructor(arg) {
+     super(arg);
+     this.gradClassName = arg.gradClassName;
+     this.favInstructor = arg.favInstructor;
+   }
 }
 /*
   STRETCH PROBLEM (no tests!)
