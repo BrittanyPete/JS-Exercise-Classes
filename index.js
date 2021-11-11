@@ -258,7 +258,32 @@ class ProjectManager extends Instructor {
      this.gradClassName = arg.gradClassName;
      this.favInstructor = arg.favInstructor;
    }
+   standUp(channel){
+     return `${this.name} announces to ${channel}, @channel standy times!`;
+   }
+   debugsCode(this.Student, subject){
+     return `${this.name} debugs ${this.Student}'s code on ${subject}`;
+   }
 }
+
+const dax = new ProjectManager({
+  name: 'Dax',
+  age: 37,
+  location: 'Italy',
+  specialty: 'whistling',
+  favLanguage: 'JS',
+  catchPhrase: 'We got this!',
+  gradClassName: 'Web50',
+  favInstructor: 'Brit'
+});
+
+console.log('Task 6:', dax);
+console.log(dax.grade('Malorie', 'History'));
+console.log(dax.standUp('Slack Web50'));
+console.log(dax.debugsCode(ace, 'JavaScript'));
+
+
+
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
