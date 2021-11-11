@@ -128,23 +128,16 @@ console.log(ford.drive(431));
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-  constructor(arg){
-    this.name = arg.name;
-    this.age = arg.age;
-    this.location = arg.location;
+  constructor({name, age, location}){
+    this.name = name;
+    this.age = age;
+    this.location = location;
   }
-  speak() {
-    return `Hello may name is ${this.name}, I am from ${this.location}`;
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
 }
 
-const eli = new Lambdasian({
-  name: 'Eli',
-  age: 28,
-  location: 'Antarctica',
-});
-
-console.log('Task 3:', eli.speak());
 
 /*
   TASK 4
@@ -161,32 +154,20 @@ console.log('Task 3:', eli.speak());
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 class Instructor extends Lambdasian {
-  constructor(arg){
-    super(arg);
-    this.specialty = arg.specialty;
-    this.favLanguage = arg.favLanguage;
-    this.catchPhrase = arg.catchPhrase;
+  constructor({name, age, location, specialty, favLanguage, catchPhrase}){
+    super({name, age, location, specialty, favLanguage, catchPhrase});
+    this.specialty = specialty;
+    this.favLanguage = favLanguage;
+    this.catchPhrase = catchPhrase;
   }
   demo(subject){
     return `Today we are learning about ${subject}`;
   }
   grade(student, subject){
-    return `${student} receives a perfect score on ${subject}`;
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
-const britt = new Instructor ({
-  name: 'Britt',
-  age: 33,
-  location: 'North Pole',
-  specialty: 'humming',
-  favLanguage: 'CSS',
-  catchPhrase: 'You can do it!',
-});
-
-console.log('Task 4:', britt);
-console.log(britt.demo('Math'));
-console.log(britt.grade('Zeke', 'English'));
 
 
 
@@ -205,12 +186,13 @@ console.log(britt.grade('Zeke', 'English'));
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
+
 class Student extends Lambdasian {
-  constructor(arg) {
-  super(arg);
-  this.previousBackground = arg.previousBackground;
-  this.className = arg.className;
-  this.favSubjects = arg.favSubjects;
+  constructor({name, age, location, specialty, favLanguage, catchPhrase, previousBackground, className, favSubjects}){
+    super({name, age, location, specialty, favLanguage, catchPhrase});
+    this.previousBackground = previousBackground;
+    this.className = className;
+    this.favSubjects = favSubjects;
   }
   listSubjects() {
     return `Loving ${this.favSubjects}!`;
@@ -222,20 +204,6 @@ class Student extends Lambdasian {
     return `${this.name} has begun spring challenge on ${subject}`;
   }
 }
-
-const ace = new Student({
-  name: 'Ace',
-  age: 22,
-  location: 'Costa Rica',
-  previousBackground: 'student',
-  className: 'Class123',
-  favSubjects: 'HTML, CSS, JS',
-});
-
-console.log('Task 5:', ace);
-console.log(ace.listSubjects());
-console.log(ace.PRAssignment('CSS'));
-console.log(ace.sprintChallenge('JS'));
 
 
 
@@ -252,35 +220,27 @@ console.log(ace.sprintChallenge('JS'));
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
+
 class ProjectManager extends Instructor {
-   constructor(arg) {
-     super(arg);
-     this.gradClassName = arg.gradClassName;
-     this.favInstructor = arg.favInstructor;
+   constructor({name, age, location, specialty, favLanguage, catchPhrase, gradClassName, favInstructor}) {
+     super({name, age, location, specialty, favLanguage, catchPhrase});
+     this.gradClassName = gradClassName;
+     this.favInstructor = favInstructor;
    }
    standUp(channel){
      return `${this.name} announces to ${channel}, @channel standy times!`;
    }
-   debugsCode(this.Student, subject){
-     return `${this.name} debugs ${this.Student}'s code on ${subject}`;
+   debugsCode(student, subject){
+     return `${this.name} debugs ${student.name}'s code on ${subject}`;
    }
 }
 
-const dax = new ProjectManager({
-  name: 'Dax',
-  age: 37,
-  location: 'Italy',
-  specialty: 'whistling',
-  favLanguage: 'JS',
-  catchPhrase: 'We got this!',
-  gradClassName: 'Web50',
-  favInstructor: 'Brit'
-});
+// const dax = new ProjectManager('Dax', 27, 'Italy', 'whistling', 'JS', 'We got this!', 'Web50', 'Britt');
 
-console.log('Task 6:', dax);
-console.log(dax.grade('Malorie', 'History'));
-console.log(dax.standUp('Slack Web50'));
-console.log(dax.debugsCode(ace, 'JavaScript'));
+// console.log('Task 6:', dax);
+// console.log(dax.grade('Malorie', 'History'));
+// console.log(dax.standUp('Slack Web50'));
+// console.log(dax.debugsCode({ace}, 'JavaScript'));
 
 
 
